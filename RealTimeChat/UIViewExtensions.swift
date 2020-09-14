@@ -1,5 +1,5 @@
 //
-//  ContactsViewController.swift
+//  UIViewExtensions.swift
 //  RealTimeChat
 //
 //  Created by Miyo Alpízar on 14/09/20.
@@ -8,6 +8,7 @@
 
 import UIKit
 
-extension ContactsViewController {
+extension UIView {
+    
     
 }
