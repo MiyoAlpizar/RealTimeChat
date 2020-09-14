@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContactsViewController.swift
 //  RealTimeChat
 //
 //  Created by Miyo Alpízar on 14/09/20.
@@ -8,10 +8,6 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+extension ContactsViewController {
+    
 }
-
