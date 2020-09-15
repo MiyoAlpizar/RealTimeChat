@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01DC74DDD57F70A7A1629205 /* Pods_RealTimeChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C405899521CCDDD8A89FE9 /* Pods_RealTimeChatTests.framework */; };
 		6F1D78CDA1783B09B6FB3A5A /* Pods_RealTimeChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64BB690B5069B92F682FDED /* Pods_RealTimeChat.framework */; };
+		A244318D251101CF00758DC0 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A244318C251101CF00758DC0 /* DatabaseHelper.swift */; };
+		A268AC8E25111B23005073F2 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268AC8D25111B23005073F2 /* ProfileTableViewController.swift */; };
+		A268AC9025111B60005073F2 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268AC8F25111B60005073F2 /* ChatsTableViewController.swift */; };
+		A268AC9225111B7D005073F2 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268AC9125111B7D005073F2 /* ContactsTableViewController.swift */; };
 		A2ABA117250FF1BA0021880D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA116250FF1BA0021880D /* AppDelegate.swift */; };
 		A2ABA119250FF1BA0021880D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA118250FF1BA0021880D /* SceneDelegate.swift */; };
 		A2ABA11E250FF1BA0021880D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2ABA11C250FF1BA0021880D /* Main.storyboard */; };
@@ -20,7 +25,6 @@
 		A2ABA152250FFBB00021880D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA151250FFBB00021880D /* StartViewController.swift */; };
 		A2ABA157251001130021880D /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA156251001130021880D /* UserHelper.swift */; };
 		A2ABA1592510032E0021880D /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA1582510032E0021880D /* MainTabViewController.swift */; };
-		A2ABA15F251003BF0021880D /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA15E251003BF0021880D /* ContactsViewController.swift */; };
 		A2ABA161251004F90021880D /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA160251004F90021880D /* AppUser.swift */; };
 		A2ABA16725102C240021880D /* ButtonExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA16625102C240021880D /* ButtonExtentions.swift */; };
 		A2ABA16925102DFD0021880D /* ViewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA16825102DFD0021880D /* ViewControllerExtentions.swift */; };
@@ -49,7 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		383321EE4FC252C5C85F3B60 /* Pods-RealTimeChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealTimeChatTests.debug.xcconfig"; path = "Target Support Files/Pods-RealTimeChatTests/Pods-RealTimeChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4914BB8122452ACF42569EFE /* Pods-RealTimeChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealTimeChat.release.xcconfig"; path = "Target Support Files/Pods-RealTimeChat/Pods-RealTimeChat.release.xcconfig"; sourceTree = "<group>"; };
+		59C405899521CCDDD8A89FE9 /* Pods_RealTimeChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealTimeChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A244318C251101CF00758DC0 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		A268AC8D25111B23005073F2 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		A268AC8F25111B60005073F2 /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
+		A268AC9125111B7D005073F2 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A2ABA113250FF1B90021880D /* RealTimeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealTimeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2ABA116250FF1BA0021880D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2ABA118250FF1BA0021880D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +78,6 @@
 		A2ABA151250FFBB00021880D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A2ABA156251001130021880D /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		A2ABA1582510032E0021880D /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
-		A2ABA15E251003BF0021880D /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		A2ABA160251004F90021880D /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		A2ABA16625102C240021880D /* ButtonExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtentions.swift; sourceTree = "<group>"; };
 		A2ABA16825102DFD0021880D /* ViewControllerExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtentions.swift; sourceTree = "<group>"; };
@@ -79,6 +88,7 @@
 		A2FCFB1A251076D600280BED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B3BC290AAB9DE0042CE64999 /* Pods-RealTimeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealTimeChat.debug.xcconfig"; path = "Target Support Files/Pods-RealTimeChat/Pods-RealTimeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		B64BB690B5069B92F682FDED /* Pods_RealTimeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealTimeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF735ECB2797C79B6D6B0A6C /* Pods-RealTimeChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealTimeChatTests.release.xcconfig"; path = "Target Support Files/Pods-RealTimeChatTests/Pods-RealTimeChatTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DC74DDD57F70A7A1629205 /* Pods_RealTimeChatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +123,8 @@
 			children = (
 				B3BC290AAB9DE0042CE64999 /* Pods-RealTimeChat.debug.xcconfig */,
 				4914BB8122452ACF42569EFE /* Pods-RealTimeChat.release.xcconfig */,
+				383321EE4FC252C5C85F3B60 /* Pods-RealTimeChatTests.debug.xcconfig */,
+				CF735ECB2797C79B6D6B0A6C /* Pods-RealTimeChatTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -205,9 +218,11 @@
 			children = (
 				A2ABA151250FFBB00021880D /* StartViewController.swift */,
 				A2ABA1582510032E0021880D /* MainTabViewController.swift */,
-				A2ABA15E251003BF0021880D /* ContactsViewController.swift */,
 				A2D81CB0251052A4005551E4 /* CreateAccountViewController.swift */,
 				A2FCFB1A251076D600280BED /* LoginViewController.swift */,
+				A268AC8D25111B23005073F2 /* ProfileTableViewController.swift */,
+				A268AC8F25111B60005073F2 /* ChatsTableViewController.swift */,
+				A268AC9125111B7D005073F2 /* ContactsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -216,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				A2ABA156251001130021880D /* UserHelper.swift */,
+				A244318C251101CF00758DC0 /* DatabaseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -251,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				B64BB690B5069B92F682FDED /* Pods_RealTimeChat.framework */,
+				59C405899521CCDDD8A89FE9 /* Pods_RealTimeChatTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -281,9 +298,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2ABA140250FF1BB0021880D /* Build configuration list for PBXNativeTarget "RealTimeChatTests" */;
 			buildPhases = (
+				A804F83D1137E360C529F473 /* [CP] Check Pods Manifest.lock */,
 				A2ABA125250FF1BB0021880D /* Sources */,
 				A2ABA126250FF1BB0021880D /* Frameworks */,
 				A2ABA127250FF1BB0021880D /* Resources */,
+				82EAAFEA12D3FC303E6927CD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -385,6 +404,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		82EAAFEA12D3FC303E6927CD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RealTimeChatTests/Pods-RealTimeChatTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RealTimeChatTests/Pods-RealTimeChatTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RealTimeChatTests/Pods-RealTimeChatTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A804F83D1137E360C529F473 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RealTimeChatTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E349499FD788FDD6347C93BD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,15 +492,18 @@
 				A2D81CB1251052A4005551E4 /* CreateAccountViewController.swift in Sources */,
 				A2ABA16B251031950021880D /* UIViewExtensions.swift in Sources */,
 				A2ABA152250FFBB00021880D /* StartViewController.swift in Sources */,
+				A268AC9225111B7D005073F2 /* ContactsTableViewController.swift in Sources */,
 				A2FCFB1B251076D600280BED /* LoginViewController.swift in Sources */,
 				A2ABA16925102DFD0021880D /* ViewControllerExtentions.swift in Sources */,
-				A2ABA15F251003BF0021880D /* ContactsViewController.swift in Sources */,
 				A2ABA1592510032E0021880D /* MainTabViewController.swift in Sources */,
 				A2ABA16725102C240021880D /* ButtonExtentions.swift in Sources */,
+				A268AC8E25111B23005073F2 /* ProfileTableViewController.swift in Sources */,
+				A244318D251101CF00758DC0 /* DatabaseHelper.swift in Sources */,
 				A2FCFB1725105C8C00280BED /* ScrollViewController.swift in Sources */,
 				A2ABA161251004F90021880D /* AppUser.swift in Sources */,
 				A2ABA14E250FF9100021880D /* ColorExtensions.swift in Sources */,
 				A2FCFB19251060BA00280BED /* StringExtensions.swift in Sources */,
+				A268AC9025111B60005073F2 /* ChatsTableViewController.swift in Sources */,
 				A2ABA157251001130021880D /* UserHelper.swift in Sources */,
 				A2ABA117250FF1BA0021880D /* AppDelegate.swift in Sources */,
 				A2ABA119250FF1BA0021880D /* SceneDelegate.swift in Sources */,
@@ -654,6 +715,7 @@
 		};
 		A2ABA141250FF1BB0021880D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 383321EE4FC252C5C85F3B60 /* Pods-RealTimeChatTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -676,6 +738,7 @@
 		};
 		A2ABA142250FF1BB0021880D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF735ECB2797C79B6D6B0A6C /* Pods-RealTimeChatTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

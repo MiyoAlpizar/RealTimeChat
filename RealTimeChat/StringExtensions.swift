@@ -188,6 +188,13 @@ extension UITextField {
         return txt.count < count
     }
     
+    func isNumber() -> Bool {
+        guard let txt = self.text else {
+            return false
+        }
+        return txt.isNumber()
+    }
+    
     func isValidEmail() -> Bool {
         guard let txt = self.text else {
             return false

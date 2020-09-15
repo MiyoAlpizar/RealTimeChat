@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import CodableFirebase
 
 class  UserHelper {
     
@@ -23,7 +24,7 @@ class  UserHelper {
     public func CurrentUser() -> AppUser? {
         logOut()
         if let user = Auth.auth().currentUser {
-            let u = AppUser(email: user.email ?? "No Email", name: user.displayName ?? "No name")
+            let u = AppUser(uid: user.uid,email: user.email ?? "No Email", name: user.displayName ?? "No name", lastName: "", phoneNumber: "")
             return u
         }
         return nil
@@ -32,6 +33,7 @@ class  UserHelper {
     public func registerUser(email: String,
                              name: String,
                              lastName: String,
+                             phone: String,
                              pwd: String,
                              completion: @escaping (Result<String, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: pwd) { (result, error) in
@@ -43,7 +45,25 @@ class  UserHelper {
                 completion(.failure(NSError(domain: "Error on Firebase", code: -1, userInfo: nil)))
                 return
             }
-            completion(.success(result.user.uid))
+            self.addUser(user: AppUser(uid: result.user.uid, email: email, name: name, lastName: lastName, phoneNumber: phone)) { (res) in
+                switch res {
+                case .success(_):
+                    completion(.success(result.user.uid))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    private func addUser(user: AppUser, completion: @escaping(Result<Bool, Error>) -> Void) {
+        let docData = try! FirestoreEncoder().encode(user)
+        DatabaseHelper.shared.database.child(DatabaseHelper.shared.users).child(user.uid).setValue(docData) { (error, ref) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            completion(.success(true))
         }
     }
     

@@ -45,6 +45,16 @@ class CreateAccountViewController: ScrollViewController {
         return txt
     }()
     
+    private let txtPhone: UITextField = {
+        let txt = UITextField()
+        txt.borderStyle = .roundedRect
+        txt.returnKeyType = .next
+        txt.autocapitalizationType = .none
+        txt.keyboardType = .phonePad
+        txt.placeholder = "Phone Number"
+        return txt
+    }()
+    
     private let txtPwd: UITextField = {
         let txt = UITextField()
         txt.borderStyle = .roundedRect
@@ -106,6 +116,14 @@ class CreateAccountViewController: ScrollViewController {
             return
         }
         
+        if !txtPhone.isNumber() {
+            alert(message: "You must enter a valid Phone Number") { [weak self] in
+                guard let `self` = self else { return }
+                self.txtPhone.becomeFirstResponder()
+            }
+            return
+        }
+        
         if !txtEmail.isValidEmail() {
             alert(message: "You must enter a valid E-mail") { [weak self] in
                 guard let `self` = self else { return }
@@ -126,13 +144,15 @@ class CreateAccountViewController: ScrollViewController {
         UserHelper.shared.registerUser(email: txtEmail.text!,
                                        name: txtName.text!,
                                        lastName: txtLastName.text!,
+                                       phone: txtPhone.text!,
                                        pwd: txtPwd.text!) { [weak self] (result)  in
                                         SVProgressHUD.dismiss()
                                         guard let `self` = self else { return }
                                         switch result {
                                         case .success(let uid):
                                             print(uid)
-                                            self.dismiss(animated: true, completion: nil)
+                                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                            appDelegate.window!.rootViewController = MainTabViewController()
                                             break
                                         case .failure(let error):
                                             self.alert(message: error.localizedDescription)
@@ -152,6 +172,7 @@ extension CreateAccountViewController {
         contentView.addSubview(logo)
         contentView.addSubview(txtName)
         contentView.addSubview(txtLastName)
+        contentView.addSubview(txtPhone)
         contentView.addSubview(txtEmail)
         contentView.addSubview(txtPwd)
         contentView.addSubview(btnRegister)
@@ -187,10 +208,17 @@ extension CreateAccountViewController {
             make.height.equalTo(height)
         }
         
-        txtEmail.snp.makeConstraints { (make) in
+        txtPhone.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(widthBy)
             make.top.equalTo(txtLastName.snp.bottom).offset(12)
+            make.height.equalTo(height)
+        }
+        
+        txtEmail.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(widthBy)
+            make.top.equalTo(txtPhone.snp.bottom).offset(12)
             make.height.equalTo(height)
         }
         
@@ -219,6 +247,8 @@ extension CreateAccountViewController: UITextFieldDelegate {
         case txtName:
             txtLastName.becomeFirstResponder()
         case txtLastName:
+            txtPhone.becomeFirstResponder()
+        case txtPhone:
             txtEmail.becomeFirstResponder()
         case txtEmail:
             txtPwd.becomeFirstResponder()
