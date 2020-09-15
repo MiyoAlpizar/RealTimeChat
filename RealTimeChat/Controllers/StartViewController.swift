@@ -42,12 +42,24 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         addViews()
         autoLayOut()
-        animateLogo()
         setTargets()
+        validateCurrentUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func validateCurrentUser() {
+        UserHelper.shared.currentUser { [weak self] (isIn) in
+            guard let `self` = self else { return }
+            if isIn {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window!.rootViewController = MainTabViewController()
+            }else {
+                self.animateLogo()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {

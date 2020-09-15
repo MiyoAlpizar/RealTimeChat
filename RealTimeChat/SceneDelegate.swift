@@ -20,13 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let w = (scene as? UIWindowScene) {
             let window = UIWindow(windowScene: w)
             window.backgroundColor = UIColor.background
-            
-            if UserHelper.shared.IsUserIn() {
-                window.rootViewController = MainTabViewController()
-            }else {
-                window.rootViewController = StartViewController()
-            }
-            
+            window.rootViewController = StartViewController()
             self.window = window
             window.makeKeyAndVisible()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate

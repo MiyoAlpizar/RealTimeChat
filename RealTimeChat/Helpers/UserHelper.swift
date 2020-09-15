@@ -17,17 +17,39 @@ class  UserHelper {
         return _shared
     }
     
-    public func IsUserIn() -> Bool {
-        return CurrentUser() != nil
+    public func isUserIn() -> Bool {
+        return Auth.auth().currentUser != nil
     }
     
-    public func CurrentUser() -> AppUser? {
-        logOut()
-        if let user = Auth.auth().currentUser {
-            let u = AppUser(uid: user.uid,email: user.email ?? "No Email", name: user.displayName ?? "No name", lastName: "", phoneNumber: "")
-            return u
+    public func currentUser(completion: @escaping(Bool) -> Void) {
+        //logOut()
+        if _user.uid != "" {
+            completion(true)
         }
-        return nil
+        if let user = Auth.auth().currentUser {
+            DatabaseHelper.shared.userData.child(user.uid).observeSingleEvent(of: DataEventType.value) { (data) in
+                if !data.exists() {
+                    completion(false)
+                    return
+                }
+                guard let value = data.value else { return }
+                do {
+                    let user = try FirebaseDecoder().decode(AppUser.self, from: value)
+                    self._user = user
+                    completion(true)
+                } catch let error {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    private var _user = AppUser(uid: "", email: "", name: "", lastName: "", phoneNumber: "")
+    
+    public var user: AppUser {
+        get {
+            return _user
+        }
     }
     
     public func registerUser(email: String,

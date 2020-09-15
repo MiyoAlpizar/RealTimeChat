@@ -14,4 +14,6 @@ final class DatabaseHelper {
     
     public let users = "users"
     
+    public let userData = Database.database().reference(withPath: "users")
+    
 }
