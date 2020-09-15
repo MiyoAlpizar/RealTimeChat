@@ -25,6 +25,9 @@
 		A2ABA16725102C240021880D /* ButtonExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA16625102C240021880D /* ButtonExtentions.swift */; };
 		A2ABA16925102DFD0021880D /* ViewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA16825102DFD0021880D /* ViewControllerExtentions.swift */; };
 		A2ABA16B251031950021880D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA16A251031950021880D /* UIViewExtensions.swift */; };
+		A2D81CB1251052A4005551E4 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D81CB0251052A4005551E4 /* CreateAccountViewController.swift */; };
+		A2FCFB1725105C8C00280BED /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCFB1625105C8C00280BED /* ScrollViewController.swift */; };
+		A2FCFB19251060BA00280BED /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FCFB18251060BA00280BED /* StringExtensions.swift */; };
 		C1CA60CDA609B50A3C3520A2 /* Pods_RealTimeChat_RealTimeChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E062604C1FA369A219B0494E /* Pods_RealTimeChat_RealTimeChatUITests.framework */; };
 		DFC06C15886D75C830C142BF /* Pods_RealTimeChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C21708203C422525A36B672D /* Pods_RealTimeChatTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +77,9 @@
 		A2ABA16625102C240021880D /* ButtonExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtentions.swift; sourceTree = "<group>"; };
 		A2ABA16825102DFD0021880D /* ViewControllerExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtentions.swift; sourceTree = "<group>"; };
 		A2ABA16A251031950021880D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		A2D81CB0251052A4005551E4 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		A2FCFB1625105C8C00280BED /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		A2FCFB18251060BA00280BED /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B3BC290AAB9DE0042CE64999 /* Pods-RealTimeChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealTimeChat.debug.xcconfig"; path = "Target Support Files/Pods-RealTimeChat/Pods-RealTimeChat.debug.xcconfig"; sourceTree = "<group>"; };
 		B64BB690B5069B92F682FDED /* Pods_RealTimeChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealTimeChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21708203C422525A36B672D /* Pods_RealTimeChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealTimeChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +218,7 @@
 				A2ABA151250FFBB00021880D /* StartViewController.swift */,
 				A2ABA1582510032E0021880D /* MainTabViewController.swift */,
 				A2ABA15E251003BF0021880D /* ContactsViewController.swift */,
+				A2D81CB0251052A4005551E4 /* CreateAccountViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 				A2ABA16625102C240021880D /* ButtonExtentions.swift */,
 				A2ABA16825102DFD0021880D /* ViewControllerExtentions.swift */,
 				A2ABA16A251031950021880D /* UIViewExtensions.swift */,
+				A2FCFB18251060BA00280BED /* StringExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +253,7 @@
 		A2ABA163251029DF0021880D /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				A2FCFB1625105C8C00280BED /* ScrollViewController.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -499,14 +508,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2D81CB1251052A4005551E4 /* CreateAccountViewController.swift in Sources */,
 				A2ABA16B251031950021880D /* UIViewExtensions.swift in Sources */,
 				A2ABA152250FFBB00021880D /* StartViewController.swift in Sources */,
 				A2ABA16925102DFD0021880D /* ViewControllerExtentions.swift in Sources */,
 				A2ABA15F251003BF0021880D /* ContactsViewController.swift in Sources */,
 				A2ABA1592510032E0021880D /* MainTabViewController.swift in Sources */,
 				A2ABA16725102C240021880D /* ButtonExtentions.swift in Sources */,
+				A2FCFB1725105C8C00280BED /* ScrollViewController.swift in Sources */,
 				A2ABA161251004F90021880D /* AppUser.swift in Sources */,
 				A2ABA14E250FF9100021880D /* ColorExtensions.swift in Sources */,
+				A2FCFB19251060BA00280BED /* StringExtensions.swift in Sources */,
 				A2ABA157251001130021880D /* UserHelper.swift in Sources */,
 				A2ABA117250FF1BA0021880D /* AppDelegate.swift in Sources */,
 				A2ABA119250FF1BA0021880D /* SceneDelegate.swift in Sources */,
