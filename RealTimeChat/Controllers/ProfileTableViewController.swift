@@ -10,8 +10,14 @@ import UIKit
 
 class ProfileTableViewController: UITableViewController {
 
+    let header: ProfileHeaderView = {
+        let header = ProfileHeaderView()
+        return header
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
     }
 
     // MARK: - Table view data source
@@ -78,4 +84,12 @@ class ProfileTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+extension ProfileTableViewController {
+    private func setupViews() {
+        tableView.tableHeaderView = header
+        tableView.tableFooterView = UIView()
+    }
 }

@@ -41,7 +41,7 @@ class MainTabViewController: UITabBarController {
     }()
     
     private let profileVC: ProfileTableViewController = {
-        let vc = ProfileTableViewController()
+        let vc = ProfileTableViewController(style: UITableView.Style.grouped)
         vc.title = "Profile"
         return vc
     }()
