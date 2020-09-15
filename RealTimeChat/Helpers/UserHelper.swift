@@ -23,10 +23,16 @@ class  UserHelper {
     
     public func currentUser(completion: @escaping(Bool) -> Void) {
         //logOut()
-        if _user.uid == "" {
+        if Auth.auth().currentUser == nil {
             completion(false)
             return
         }
+        getCurrentUser { (ok) in
+            completion(ok)
+        }
+    }
+    
+    private func getCurrentUser(completion: @escaping(Bool) -> Void) {
         if let user = Auth.auth().currentUser {
             DatabaseHelper.shared.userData.child(user.uid).observeSingleEvent(of: DataEventType.value) { (data) in
                 if !data.exists() {
@@ -98,7 +104,9 @@ class  UserHelper {
             }
             if let result = result {
                 print(result)
-                completion(.success(true))
+                self.getCurrentUser { (ok) in
+                    completion(.success(ok))
+                }
                 return
             }
             completion(.success(false))

@@ -70,6 +70,10 @@ class ProfileHeaderView: UIView {
             make.top.equalTo(circleInitailsView.snp.bottom).offset(12)
         }
         
+        labelInitials.text = UserHelper.shared.user.name.substring(toIndex: 1).uppercased() + UserHelper.shared.user.lastName.substring(toIndex: 1).uppercased()
+        
+        labelName.text = UserHelper.shared.user.name + " " + UserHelper.shared.user.lastName
+        
     }
     
     override init(frame: CGRect) {
