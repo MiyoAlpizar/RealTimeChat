@@ -43,6 +43,14 @@ class LoginViewController: ScrollViewController {
         return btn
     }()
     
+    private let btnForgotPassword: UIButton = {
+        let btn = UIButton(type: UIButton.ButtonType.system)
+        btn.setTitle("Forgot password?", for: UIControl.State.normal)
+        btn.asDefault()
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.light)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setInit()
@@ -61,10 +69,36 @@ class LoginViewController: ScrollViewController {
                                                            target: self,
                                                            action: #selector(close))
         btnLogin.addTarget(self, action: #selector(validateLogin), for: UIControl.Event.touchUpInside)
+        
+        btnForgotPassword.addTarget(self, action: #selector(forgotPassword), for: UIControl.Event.touchUpInside)
     }
     
     @objc func close() {
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func forgotPassword() {
+        self.view.endEditing(true)
+        
+        if !txtEmail.isValidEmail() {
+            alert(message: "Please write your E-mail Address to send you your recovery password link") { [weak self] in
+                guard let `self` = self else { return }
+                self.txtEmail.becomeFirstResponder()
+            }
+            return
+        }
+        SVProgressHUD.show()
+        UserHelper.shared.sendEmailToRecoveryPassword(with: txtEmail.text!) { [weak self] (result) in
+            SVProgressHUD.dismiss()
+            guard let `self` = self else { return }
+            switch result {
+            case .success(_):
+                self.alert(message: "Link to recovery password was succesful send to " + self.txtEmail.text!)
+            case .failure(let error):
+                self.alert(title: "Error to send recovery password", message: error.localizedDescription)
+            }
+        }
+        
     }
     
     @objc func validateLogin() {
@@ -117,18 +151,19 @@ extension LoginViewController {
         contentView.addSubview(txtEmail)
         contentView.addSubview(txtPwd)
         contentView.addSubview(btnLogin)
+        contentView.addSubview(btnForgotPassword)
         txtEmail.delegate = self
         txtPwd.delegate = self
     }
     
     private func layoutViews() {
-        let height: CGFloat = 54
+        let height: CGFloat = 44
         let widthBy: CGFloat = 0.86
         
         
         logo.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(self.windowInsets.top + 60)
+            make.top.equalToSuperview().offset(self.windowInsets.top + 20)
             make.width.equalTo(120)
             make.height.equalTo(120)
         }
@@ -152,7 +187,14 @@ extension LoginViewController {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(widthBy)
             make.top.equalTo(txtPwd.snp.bottom).offset(36)
-            make.height.equalTo(height)
+            make.height.equalTo(54)
+        }
+        
+        btnForgotPassword.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(widthBy)
+            make.top.equalTo(btnLogin.snp.bottom).offset(12)
+            make.height.equalTo(54)
         }
     }
     

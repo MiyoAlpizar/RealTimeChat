@@ -13,7 +13,7 @@ extension UIButton {
         self.backgroundColor = UIColor.primary
         self.setTitleColor(UIColor.white, for: UIControl.State.normal)
         self.layer.cornerRadius = 19
-        self.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.light)
     }
     
     public func asDefault() {

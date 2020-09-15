@@ -90,6 +90,16 @@ class  UserHelper {
             print("already logged out")
         }
     }
+    
+    public func sendEmailToRecoveryPassword(with email: String, completion: @escaping(Result<Bool, Error>)  -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let error = error {
+                completion(.failure(error))
+            }else {
+                completion(.success(true))
+            }
+        }
+    }
 }
 
 

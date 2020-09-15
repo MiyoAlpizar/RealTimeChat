@@ -10,7 +10,16 @@ import UIKit
 import SnapKit
 
 /// A simple UIViewController with ScrollView with AutoLayout, just addSubviews to contentView property
-class ScrollViewController: UIViewController {
+class ScrollViewController: UIViewController, KeyBoardDelegate {
+    
+    var keyBoardHelper: KeyBoardHelper!
+    
+    func heightChanged(height: CGFloat, duration: TimeInterval, isUp: Bool) {
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = height + 20
+        scrollView.contentInset = contentInset
+    }
+    
 
     let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -31,9 +40,12 @@ class ScrollViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        keyBoardHelper = KeyBoardHelper()
+        keyBoardHelper.delegate = self
     }
     
     private func setupViews() {
+        self.view.hideKeyboardWhenTappedAround()
         self.view.backgroundColor = UIColor.background
         self.view.addSubview(scrollView)
         self.scrollView.addSubview(contentView)

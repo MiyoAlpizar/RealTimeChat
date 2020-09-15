@@ -183,13 +183,13 @@ extension CreateAccountViewController {
     }
     
     private func layoutViews() {
-        let height: CGFloat = 54
+        let height: CGFloat = 44
         let widthBy: CGFloat = 0.86
         
         
         logo.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(self.windowInsets.top + 60)
+            make.top.equalToSuperview().offset(self.windowInsets.top + 20)
             make.width.equalTo(120)
             make.height.equalTo(120)
         }
@@ -233,7 +233,7 @@ extension CreateAccountViewController {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(widthBy)
             make.top.equalTo(txtPwd.snp.bottom).offset(36)
-            make.height.equalTo(height)
+            make.height.equalTo(54)
         }
     }
     

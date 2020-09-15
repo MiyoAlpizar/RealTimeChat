@@ -33,7 +33,7 @@ class StartViewController: UIViewController {
         let button = UIButton(type: .system)
         button.asDefault()
         button.alpha = 0
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.light)
         button.setTitle("Create Account", for: UIControl.State.normal)
         return button
     }()

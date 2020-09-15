@@ -13,6 +13,7 @@
 		A268AC8E25111B23005073F2 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268AC8D25111B23005073F2 /* ProfileTableViewController.swift */; };
 		A268AC9025111B60005073F2 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268AC8F25111B60005073F2 /* ChatsTableViewController.swift */; };
 		A268AC9225111B7D005073F2 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268AC9125111B7D005073F2 /* ContactsTableViewController.swift */; };
+		A268AC9425111E91005073F2 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A268AC9325111E91005073F2 /* KeyboardHelper.swift */; };
 		A2ABA117250FF1BA0021880D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA116250FF1BA0021880D /* AppDelegate.swift */; };
 		A2ABA119250FF1BA0021880D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ABA118250FF1BA0021880D /* SceneDelegate.swift */; };
 		A2ABA11E250FF1BA0021880D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2ABA11C250FF1BA0021880D /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		A268AC8D25111B23005073F2 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		A268AC8F25111B60005073F2 /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
 		A268AC9125111B7D005073F2 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		A268AC9325111E91005073F2 /* KeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
 		A2ABA113250FF1B90021880D /* RealTimeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealTimeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2ABA116250FF1BA0021880D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2ABA118250FF1BA0021880D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				A2ABA156251001130021880D /* UserHelper.swift */,
 				A244318C251101CF00758DC0 /* DatabaseHelper.swift */,
+				A268AC9325111E91005073F2 /* KeyboardHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				A244318D251101CF00758DC0 /* DatabaseHelper.swift in Sources */,
 				A2FCFB1725105C8C00280BED /* ScrollViewController.swift in Sources */,
 				A2ABA161251004F90021880D /* AppUser.swift in Sources */,
+				A268AC9425111E91005073F2 /* KeyboardHelper.swift in Sources */,
 				A2ABA14E250FF9100021880D /* ColorExtensions.swift in Sources */,
 				A2FCFB19251060BA00280BED /* StringExtensions.swift in Sources */,
 				A268AC9025111B60005073F2 /* ChatsTableViewController.swift in Sources */,
