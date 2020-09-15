@@ -108,6 +108,12 @@ extension StartViewController {
     
     private func setTargets() {
         registerButton.addTarget(self, action: #selector(onCreateAccount), for: UIControl.Event.touchUpInside)
+        loginButton.addTarget(self, action: #selector(onLogin), for: UIControl.Event.touchUpInside)
+    }
+    
+    @objc private func onLogin() {
+        let account = LoginViewController()
+        self.presentOnNavigationController(controller: account)
     }
     
     @objc private func onCreateAccount() {

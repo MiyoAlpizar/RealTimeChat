@@ -1,5 +1,5 @@
 //
-//  CreateAccountViewController.swift
+//  LoginViewController.swift
 //  RealTimeChat
 //
 //  Created by Miyo Alpízar on 14/09/20.
@@ -8,31 +8,13 @@
 
 import UIKit
 import SVProgressHUD
-
-class CreateAccountViewController: ScrollViewController {
-    
+class LoginViewController: ScrollViewController {
     
     let logo: UIImageView = {
         let logo = UIImageView()
         logo.contentMode = .scaleAspectFit
         logo.image = #imageLiteral(resourceName: "Image")
         return logo
-    }()
-    
-    private let txtName: UITextField = {
-        let txt = UITextField()
-        txt.borderStyle = .roundedRect
-        txt.returnKeyType = .next
-        txt.placeholder = "Name"
-        return txt
-    }()
-    
-    private let txtLastName: UITextField = {
-        let txt = UITextField()
-        txt.borderStyle = .roundedRect
-        txt.returnKeyType = .next
-        txt.placeholder = "Last Name"
-        return txt
     }()
     
     private let txtEmail: UITextField = {
@@ -54,9 +36,9 @@ class CreateAccountViewController: ScrollViewController {
         return txt
     }()
     
-    private let btnRegister: UIButton = {
+    private let btnLogin: UIButton = {
         let btn = UIButton(type: UIButton.ButtonType.system)
-        btn.setTitle("Register", for: UIControl.State.normal)
+        btn.setTitle("Log In", for: UIControl.State.normal)
         btn.asPrimary()
         return btn
     }()
@@ -64,11 +46,10 @@ class CreateAccountViewController: ScrollViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setInit()
-        
     }
     
     func setInit() {
-        title = "Create Account"
+        title = "Login"
         addViews()
         layoutViews()
         addTargets()
@@ -79,7 +60,7 @@ class CreateAccountViewController: ScrollViewController {
                                                            style: UIBarButtonItem.Style.plain,
                                                            target: self,
                                                            action: #selector(close))
-        btnRegister.addTarget(self, action: #selector(validateLogin), for: UIControl.Event.touchUpInside)
+        btnLogin.addTarget(self, action: #selector(validateLogin), for: UIControl.Event.touchUpInside)
     }
     
     @objc func close() {
@@ -89,22 +70,6 @@ class CreateAccountViewController: ScrollViewController {
     @objc func validateLogin() {
         
         view.endEditing(true)
-        
-        if txtName.isLessThan(count: 3) {
-            alert(message: "You must enter a valid name") { [weak self] in
-                guard let `self` = self else { return }
-                self.txtName.becomeFirstResponder()
-            }
-            return
-        }
-        
-        if txtLastName.isLessThan(count: 3) {
-            alert(message: "You must enter a valid Last Name") { [weak self] in
-                guard let `self` = self else { return }
-                self.txtLastName.becomeFirstResponder()
-            }
-            return
-        }
         
         if !txtEmail.isValidEmail() {
             alert(message: "You must enter a valid E-mail") { [weak self] in
@@ -121,42 +86,37 @@ class CreateAccountViewController: ScrollViewController {
             }
             return
         }
-        
         SVProgressHUD.show()
-        UserHelper.shared.registerUser(email: txtEmail.text!,
-                                       name: txtName.text!,
-                                       lastName: txtLastName.text!,
-                                       pwd: txtPwd.text!) { [weak self] (result)  in
-                                        SVProgressHUD.dismiss()
-                                        guard let `self` = self else { return }
-                                        switch result {
-                                        case .success(let uid):
-                                            print(uid)
-                                            self.dismiss(animated: true, completion: nil)
-                                            break
-                                        case .failure(let error):
-                                            self.alert(message: error.localizedDescription)
-                                            break
-                                        }
-                                        
+        UserHelper.shared.login(email: txtEmail.text!, pwd: txtPwd.text!) { [weak self] (result) in
+            SVProgressHUD.dismiss()
+            guard let `self` = self else { return }
+            switch result {
+            case .success(_):
+                self.goMain()
+            case .failure(let error):
+                self.alert(message: error.localizedDescription)
+            }
         }
+        
+        
+    }
+    
+    private func goMain() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window!.rootViewController = MainTabViewController()
     }
     
 }
 
-//MARK:- ViewsAndLayouts
-extension CreateAccountViewController {
+//MARK: - ViewsAndLayouts
+extension LoginViewController {
     
     private func addViews() {
         scrollView.keyboardDismissMode = .none
         contentView.addSubview(logo)
-        contentView.addSubview(txtName)
-        contentView.addSubview(txtLastName)
         contentView.addSubview(txtEmail)
         contentView.addSubview(txtPwd)
-        contentView.addSubview(btnRegister)
-        txtName.delegate = self
-        txtLastName.delegate = self
+        contentView.addSubview(btnLogin)
         txtEmail.delegate = self
         txtPwd.delegate = self
     }
@@ -173,24 +133,11 @@ extension CreateAccountViewController {
             make.height.equalTo(120)
         }
         
-        txtName.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(widthBy)
-            make.top.equalTo(logo.snp.bottom).offset(40)
-            make.height.equalTo(height)
-        }
-        
-        txtLastName.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(widthBy)
-            make.top.equalTo(txtName.snp.bottom).offset(12)
-            make.height.equalTo(height)
-        }
         
         txtEmail.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(widthBy)
-            make.top.equalTo(txtLastName.snp.bottom).offset(12)
+            make.top.equalTo(logo.snp.bottom).offset(12)
             make.height.equalTo(height)
         }
         
@@ -201,7 +148,7 @@ extension CreateAccountViewController {
             make.height.equalTo(height)
         }
         
-        btnRegister.snp.makeConstraints { (make) in
+        btnLogin.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(widthBy)
             make.top.equalTo(txtPwd.snp.bottom).offset(36)
@@ -211,17 +158,13 @@ extension CreateAccountViewController {
     
 }
 
-
-//MARK:- Delegates
-extension CreateAccountViewController: UITextFieldDelegate {
+//MARK: -Delegates
+extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case txtName:
-            txtLastName.becomeFirstResponder()
-        case txtLastName:
-            txtEmail.becomeFirstResponder()
         case txtEmail:
             txtPwd.becomeFirstResponder()
+            break
         default:
             validateLogin()
         }
