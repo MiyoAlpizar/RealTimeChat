@@ -8,8 +8,23 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+enum profileCellType {
+    case notifications
+    case account
+    case help
+    case logout
+}
 
+struct profileCell {
+    var type: profileCellType
+    var title: String
+    var hasNext: Bool
+}
+
+class ProfileTableViewController: UITableViewController {
+    
+    var cells: [[profileCell]] = []
+    
     let header: ProfileHeaderView = {
         let header = ProfileHeaderView()
         return header
@@ -18,78 +33,58 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setData()
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return cells.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return cells[section].count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
+        let info = cells[indexPath.section][indexPath.item]
+        cell.textLabel?.text = info.title
+        cell.accessoryType = info.hasNext ? UITableViewCell.AccessoryType.disclosureIndicator : UITableViewCell.AccessoryType.none
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let info = cells[indexPath.section][indexPath.item]
+        
+        if info.type == .logout {
+            self.confirmAlert(title: "Log out", message: "You shure?, we will gonna miss you =(") {
+                UserHelper.shared.logOut()
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window!.rootViewController = StartViewController()
+            }
+        }
+        
+        tableView.deselectAllRows()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
 extension ProfileTableViewController {
     private func setupViews() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID")
         tableView.tableHeaderView = header
         tableView.tableFooterView = UIView()
+        tableView.layoutTableHeaderView()
+    }
+    
+    private func setData() {
+        
+        cells.append([profileCell(type: .account, title: "My Account", hasNext: true),
+                      profileCell(type: .notifications, title: "Notifications", hasNext: true)])
+        cells.append([profileCell(type: .help, title: "Help", hasNext: false)])
+        cells.append([profileCell(type: .logout, title: "Log out", hasNext: false)])
+        
+        
     }
 }

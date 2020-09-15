@@ -50,7 +50,7 @@ class ProfileHeaderView: UIView {
             make.right.equalToSuperview()
             make.width.equalToSuperview()
             make.top.equalToSuperview()
-            make.bottom.equalTo(labelName.snp.bottom)
+            make.bottom.equalTo(labelName.snp.bottom).offset(20)
         }
         
         circleInitailsView.snp.makeConstraints { (make) in

@@ -23,8 +23,9 @@ class  UserHelper {
     
     public func currentUser(completion: @escaping(Bool) -> Void) {
         //logOut()
-        if _user.uid != "" {
-            completion(true)
+        if _user.uid == "" {
+            completion(false)
+            return
         }
         if let user = Auth.auth().currentUser {
             DatabaseHelper.shared.userData.child(user.uid).observeSingleEvent(of: DataEventType.value) { (data) in
@@ -107,6 +108,7 @@ class  UserHelper {
     public func logOut() {
         do {
             try Auth.auth().signOut()
+           _user =  AppUser(uid: "", email: "", name: "", lastName: "", phoneNumber: "")
         }
         catch {
             print("already logged out")

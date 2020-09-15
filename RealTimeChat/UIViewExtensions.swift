@@ -42,3 +42,21 @@ extension UIView {
     }
     
 }
+
+extension UITableView {
+    
+    func layoutTableHeaderView() {
+        guard let headerView = self.tableHeaderView else { return }
+        headerView.setNeedsLayout()
+        headerView.layoutIfNeeded()
+        headerView.layoutSubviews()
+    }
+    
+    func deselectAllRows() {
+      let rows = self.indexPathsForVisibleRows
+        rows?.forEach({ (row) in
+            self.deselectRow(at: row, animated: true)
+        })
+    }
+    
+}

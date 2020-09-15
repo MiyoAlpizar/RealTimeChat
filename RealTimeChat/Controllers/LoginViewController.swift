@@ -61,6 +61,10 @@ class LoginViewController: ScrollViewController {
         addViews()
         layoutViews()
         addTargets()
+        delayWithSeconds(0.3) { [weak self] in
+            guard let `self` = self else { return }
+            self.txtEmail.becomeFirstResponder()
+        }
     }
     
     private func addTargets() {
