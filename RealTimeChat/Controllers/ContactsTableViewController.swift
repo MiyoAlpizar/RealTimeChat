@@ -12,6 +12,7 @@ class ContactsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTargets()
     }
 
     // MARK: - Table view data source
@@ -81,4 +82,28 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension ContactsTableViewController {
+    
+    func addTargets() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addContact))
+    }
+    
+    @objc func addContact() {
+        showInputDialog(title: "Look for contact",
+                        subtitle: "Please enter the number of the contact you are looking for.",
+                        actionTitle: "Search",
+                        cancelTitle: "Cancel",
+                        inputPlaceholder: "number",
+                        inputKeyboardType: .numberPad)
+        { [weak self] (input:String?) in
+            guard let ´self´ = self else { return }
+            guard let phone = input else { return }
+            UserHelper.shared.searchUsers(with: phone) { (users) in
+                print(users)
+            }
+        }
+    }
+    
 }

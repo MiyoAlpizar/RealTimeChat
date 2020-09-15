@@ -12,13 +12,13 @@ class MainTabViewController: UITabBarController {
     
     private let contactsVC: ContactsTableViewController = {
         let home = ContactsTableViewController()
-        home.title = "Contactos"
+        home.title = "Contacts"
         return home
     }()
     
     private lazy var contactsNC: UINavigationController = {
         let nc = UINavigationController(rootViewController: contactsVC)
-        nc.title = "Contactos"
+        nc.title = "Contacts"
         nc.navigationBar.prefersLargeTitles = true
         nc.tabBarItem.selectedImage = UIImage(systemName: "person.3.fill")
         nc.tabBarItem.image = UIImage(systemName: "person.3")

@@ -132,6 +132,30 @@ class  UserHelper {
             }
         }
     }
+    
+    public func searchUsers(with phone: String, completion: @escaping(Array<AppUser>) -> Void) {
+        DatabaseHelper.shared.userData.queryOrdered(byChild: "phoneNumber").queryStarting(atValue: phone).observe(DataEventType.value) { (snap) in
+            var  users: Array<AppUser> = []
+            if !snap.exists() {
+               completion(users)
+                return
+            }
+            
+           
+            
+            for child in snap.children {
+                do {
+                    guard let value = child as? [String : Any] else { return }
+                    let user = try FirebaseDecoder().decode(AppUser.self, from: value)
+                    users.append(user)
+                    print(user)
+                } catch let error {
+                    print(error)
+                }
+            }
+            completion(users)
+        }
+    }
 }
 
 
